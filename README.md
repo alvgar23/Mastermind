@@ -1,8 +1,49 @@
-# Mastermind
-Contiene 3 archivos con el juego clásico conocido popularmente como "heridos y muertos" o "mastermind" implementado de 3 maneras similares.
+# Mastermind — Heridos y muertos
 
-En el archivo mastermind_numeros la máquina (COM) generará un número aleatorio de 4 dígitos diferentes. El jugador tratará de acertar el número y el programa le dará pistas sobre su respuesta. Si acierta un dígito y su posición, habrá 1 muerto (dead). Si acierta un dígito pero no su posición, habrá 1 herido (hurt). Hay un número limitado de intentos para tratar de acertar.
+Proyecto en Python creado en noviembre de 2020 con tres variantes del juego Mastermind. Esta documentación describe el **código original**, sin modificar su funcionamiento.
 
-En el archivo mastermind_numcom, es el usuario quien genera un número de 4 dígitos diferentes y la máquina tratará de acertar dicho número en menos de 200 intentos.
+## Reglas
 
-El archivo mastermind_colores, es como el primero, solo que jugando con 4 colores en vez de con números. 
+Se debe acertar una combinación ordenada de cuatro elementos **sin repetir**.
+
+- **Dead (muerto):** elemento correcto en la posición correcta.
+- **Hurt (herido):** elemento correcto en una posición distinta.
+
+Se gana con cuatro muertos.
+
+## Versiones
+
+| Archivo | Modalidad | Intentos reales |
+| --- | --- | --- |
+| [mastermind_numeros.py](mastermind_numeros.py) | Adivinar cuatro dígitos del 0 al 9 | 20 |
+| [mastermind_colores.py](mastermind_colores.py) | Adivinar cuatro colores diferentes entre 11 disponibles | 15 |
+| [mastermind_numcom.py](mastermind_numcom.py) | El ordenador adivina los cuatro dígitos elegidos por el usuario | 200 |
+
+Las tres versiones muestran un historial de intentos. Los números se manejan como cadenas, por lo que pueden comenzar por cero.
+
+## Ejecución
+
+Se necesita Python 3. Para la variante del ordenador:
+
+```bash
+python mastermind_numcom.py
+```
+
+Las variantes de números y colores dependen de IPython para limpiar la pantalla:
+
+```bash
+python -m pip install ipython
+ipython
+```
+
+Dentro de IPython, ejecutar `%run mastermind_numeros.py` o `%run mastermind_colores.py`. Ejecutarlas directamente con Python convencional puede fallar por la llamada a `get_ipython().magic("clear")`.
+
+## Documentación técnica
+
+- [Estructura y funcionamiento](docs/funcionamiento.md)
+- [Algoritmo del ordenador](docs/algoritmo-com.md)
+- [Limitaciones conocidas](docs/limitaciones.md)
+
+## Estado
+
+Proyecto histórico de aprendizaje. No incluye pruebas automatizadas. Esta documentación se ha preparado mediante revisión estática del código, sin afirmar resultados de rendimiento no medidos.
